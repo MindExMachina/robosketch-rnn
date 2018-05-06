@@ -1,0 +1,23 @@
+{
+  "name": "server-post",
+  "version": "1.0.0",
+  "description": "A minimal node app to generate a sketch-rnn prediction from a set of strokes via http.",
+  "main": "server.js",
+  "dependencies": {
+    "atob": "2.0.3",
+    "body-parser": "1.18.2",
+    "btoa": "1.1.2",
+    "express": "4.16.2",
+    "html5-websocket": "2.0.2",
+    "numjs": "0.15.1",
+    "reconnecting-websocket": "3.2.2",
+    "ws": "4.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Nono Martínez Alonso (Nono.ma)",
+  "license": "MIT"
+}
