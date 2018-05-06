@@ -9,14 +9,11 @@ Let a robot continue your drawings using SketchRNN.
 	- Write the local IP of your robot (e.g., 192.168.0.172).
 	- Click `Connect`.
 	- (The Machina Bridge app should be now connected to the robot.)
-- Start SketchRNN as an HTTP service
+- Start [SketchRNN](sketch-rnn) as an HTTP service
 	- Go to the sketch-rnn folder.
 	- Run `npm install`.
 	- Run `node http-server.js`.
-- Open the p5js.
-	- go to p5js folder
-	- `npm install`
-	- run `http-server . -o --port xxxx?`
+- Open the [p5js-sketch-rnn-draw-http/index.html](p5js-sketch-rnn-draw-http/index.html)
 	
 	
 ## Troubleshooting
