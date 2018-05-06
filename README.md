@@ -1,5 +1,9 @@
 # robosketch-rnn
 
+wip
+
+TODO: complete instructions
+
 - Open Machina Bridge
 	- Connect to robot
 	- todo […]
