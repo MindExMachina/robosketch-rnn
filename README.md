@@ -1,4 +1,4 @@
-# robosketch-rnn
+# RoboSketchRNN
 
 Let a robot continue your drawings using SketchRNN.
 
