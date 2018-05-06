@@ -1,17 +1,19 @@
 # robosketch-rnn
 
-wip
+Let a robot continue your drawings using SketchRNN.
 
-TODO: complete instructions
+## Usage
 
-- Open Machina Bridge
-	- Connect to robot
-	- todo […]
-- Execute http server of sketch rnn
-	- go to sketch-rnn folder
-	- `npm install`
-	- run `node http-server.js`
-- http-server
+- Open `Machina-Bridge.exe`
+	- Choose the make of your robot (e.g., UR).
+	- Write the local IP of your robot (e.g., 192.168.0.172).
+	- Click `Connect`.
+	- (The Machina Bridge app should be now connected to the robot.)
+- Start SketchRNN as an HTTP service
+	- Go to the sketch-rnn folder.
+	- Run `npm install`.
+	- Run `node http-server.js`.
+- Open the p5js.
 	- go to p5js folder
 	- `npm install`
 	- run `http-server . -o --port xxxx?`
