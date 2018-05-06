@@ -172,14 +172,14 @@ class SketchRNNStroke {
         bot.PushSettings();
         bot.MotionMode("joint");
         bot.SpeedTo(travelSpeed);
-        bot.Precision(approachPrecision);
+        bot.PrecisionTo(approachPrecision);
         bot.TransformTo(cornerX + paperScale * this.vectors[0][1], cornerY + paperScale * this.vectors[0][0], cornerZ + approachDistance, -1, 0, 0, 0, 1, 0);  // Note robot XY and processing XY are flipped... 
         bot.PopSettings();
 
         bot.PushSettings();
-        bot.MotionMode("linear");
+        bot.MotionMode("joint");
         bot.SpeedTo(drawingSpeed);
-        bot.Precision(drawingPrecision);
+        bot.PrecisionTo(drawingPrecision);
         // bot.Move(0, 0, -approachDistance);  // note first point is not included in the stroke model
 
         for (let i = 0; i < this.vectors.length; i++) {
@@ -323,14 +323,14 @@ let availableModels = {
 const ROBOT_MAKE = "UR";
 
 let cornerX = 500,
-    cornerY = 500,
-    cornerZSharpie1 = 200,  // 28.5 
-    cornerZSharpie4 = 200;
-let paperWidth = 350;
+    cornerY = 100,
+    cornerZSharpie1 = 215,          // should lower this value to the Z height of the drawing surface 
+    cornerZSharpie4 = 217.5;        // this one too
+let paperWidth = 17 * 25.4;
 let paperScale;
 
 let travelSpeed = 200, 
-    drawingSpeed = 50;
+    drawingSpeed = 25;
 
 let approachDistance = 50;
 let penUpDistance = 15;
@@ -618,8 +618,32 @@ function initializeRobot() {
     robotDrawer = new Robot(rws);
 
     // Init the sharpies (definitions taken from 'toolDefinitionGenerator' in GH)
-    robotDrawer.Tool("sharpie1", 67.5, -67.5, 154.459, 0.5, -0.5, -0.70711, 0.70711, 0.70711, 0, 0.1, 0, 0, 59);  // sharpie sticking 60mm out
-    robotDrawer.Tool("sharpie4", 69, 69, 156.581, 0.5, 0.5, -0.70711, -0.70711, 0.70711, 0, 0.1, 0, 0, 59);         // sharpie sticking 63mm out
+    switch (ROBOT_MAKE.toUpperCase()) {
+        // new Tool("${name}",${x},${y},${z},${x0},${x1},${x2},${y0},${y1},${y2},${weightkg},${gx},${gy},${gz});`);
+        case "UR":
+            robotDrawer.Tool("sharpie1", 
+                101.116, 0, 150.116, 
+                0.70711, 0, -0.70711, 
+                0, 1, 0, 
+                0.1,
+                0, 0, 49);
+            robotDrawer.Tool("sharpie4", 
+                0, 101.116, 150.116, 
+                0, 0.70711, -0.70711, 
+                -1, 0, 0, 
+                0.1, 
+                0, 0, 49);
+            break;
+
+        case "ABB":
+            robotDrawer.Tool("sharpie1", 67.5, -67.5, 154.459, 0.5, -0.5, -0.70711, 0.70711, 0.70711, 0, 0.1, 0, 0, 59);  // sharpie sticking 60mm out
+            robotDrawer.Tool("sharpie4", 69, 69, 156.581, 0.5, 0.5, -0.70711, -0.70711, 0.70711, 0, 0.1, 0, 0, 59);         // sharpie sticking 63mm out
+            break;
+
+        default:
+            bot.Message("CANNOT INITIALIZE SHARPIE TOOLS");
+            break;
+    }
 
     homeRobot(robotDrawer);
 }
