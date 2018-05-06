@@ -4,7 +4,8 @@ Let a robot continue your drawings using SketchRNN.
 
 ## Usage
 
-- Open `Machina-Bridge.exe`
+- Connect to the robot with [Machina Bridge](Machina-Bridge_v0.1.0)
+	- Execute `Machina-Bridge_v0.1.0/MachinaBridge.exe`.
 	- Choose the make of your robot (e.g., UR).
 	- Write the local IP of your robot (e.g., 192.168.0.172).
 	- Click `Connect`.
