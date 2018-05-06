@@ -38,5 +38,7 @@ Here are the keystrokes you can use to control the p5js drawing app.
 
 ## Troubleshooting
 
+### Errors with `node-gyp` while trying to `npm install` sketch-rnn
+
 - `node-gyp` only works with Python 2.7, make sure this is the version you have installed and the one referenced by npm.
-- Install Visual C++ redistributable tools?
+- Install Visual C++ redistributable tools for Visual Studio 2015. I fixed it by going to the Modify and Repair panel of Visual Studio 2015 (as if you were to uninstall it) and clicking on *Modify*, then selecting to install all the C++ tools.
